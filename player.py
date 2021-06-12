@@ -2,19 +2,26 @@ import pygame
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, color, width, height, velocity):
+    def __init__(self, screen):
         super().__init__()
+
+        self.screen = screen
+
+        self.image = pygame.image.load('sprite.png')
+        self.rect = self.image.get_rect()
         
-        self.image = pygame.Surface([width, height])
-        self.image.fill('white')
-        self.image.set_colorkey('white')
+        pygame.draw.rect(screen, 'black', self.rect, 1)
+    
+    def update(self):
+        self.screen.blit(self.image, self.rect)
         
-        self.velocity = velocity
-        pygame.draw.rect(self.image, color, [0, 0, width, height])
-        
-        rect = pygame.get_rect()
-        
-    def moveUp(self, pixels):
-        
-        
-        
+    def moveY(self, pixels):
+        self.rect.y += pixels
+
+        if self.rect.y >= self.screen.get_height():
+            self.rect.y = self.screen.get_height()
+
+        if self.rect.y <= 200:
+            self.rect.y = 200
+            
+        print(self.rect.x, self.rect.y)
