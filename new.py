@@ -13,6 +13,10 @@ clock = pygame.time.Clock()
 pl = Player(screen)
 pl.rect.x = screen.get_width() // 2
 
+spritesList = pygame.sprite.Group()
+
+spritesList.add(pl)
+
 while True:
     clock.tick(60)
     screen.fill(white)
@@ -24,12 +28,12 @@ while True:
     if key[pygame.K_s]:
         pl.moveY(-5)
     
-    pl.update()
+    spritesList.update()
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             break
     
-    pl.draw(screen)
+    spritesList.draw(screen)
     pygame.display.flip()
     
