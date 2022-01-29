@@ -11,7 +11,7 @@ def init():
     global enCount, incrNum, enBulCount, hp, score, pl, screen, spritesList, bg_pos1, bg_pos2
 
     # Change incrNum to edit enemies' spawn speed (less - faster, more - slower)
-    enCount, incrNum = 0, 100
+    enCount, incrNum = 0, 250
     enBulCount = 0
     hp = 5
     score = 0
