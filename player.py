@@ -6,15 +6,19 @@ class Player(pygame.sprite.Sprite):
     
     def __init__(self, screen):
         super().__init__()
-        self.imagePath = 'sprites/sprite.png'
+        self.imagePath = 'assets/player.png'
+        self.image_thrust_path = 'assets/player_speeding.png'
         
         self.screen = screen
         self.limit = 200
 
-        self.image = pygame.image.load(self.imagePath)
+        self.image_thrust = pygame.transform.scale(pygame.image.load(self.image_thrust_path), (40, 55))
+        self.image_slow = pygame.transform.scale(pygame.image.load(self.imagePath), (40, 50))
+        
+        self.image = self.image_slow
         self.rect = self.image.get_rect()
 
-        pygame.draw.rect(screen, 'black', self.rect, 1)
+        
 
     def update(self):
         self.screen.blit(self.image, self.rect)
